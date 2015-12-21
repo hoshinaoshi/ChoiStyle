@@ -1,0 +1,20 @@
+<div class="container">
+  <div class="row">
+    <div class="span12">
+    <h1><%= @h1 %></h1>
+    </div>
+  </div>
+  <div class="row">
+    <div class="span3">
+      <div class="tile tile_search">
+        <%= form_tag({:controller => "search",:action => "index"},:id => "search_form",:method => "get") do %>
+          <%= render :partial => "selects" %>
+          <%= submit_tag "検索", :class => "btn btn-warning btn-large btn-block" %>
+        <% end %>
+      </div>
+    </div>
+    <div class="span9">
+      <%= render :partial => "user_list", :locals=>{:users=> @users} %>
+    </div>
+  </div>
+</div>

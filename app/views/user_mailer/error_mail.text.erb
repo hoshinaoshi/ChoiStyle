@@ -1,0 +1,9 @@
+URL：<%= @url %>
+<% if @user.present? %>
+  ユーザID：<%= @user.id %>
+<% end %>
+理由：<%= @exception.message %>
+バックトレース：
+<% @exception.backtrace.each do |bacltrace| %>
+  <%= bacltrace %>
+<% end %>

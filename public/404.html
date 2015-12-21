@@ -1,0 +1,24 @@
+<div class="container">
+  <div class="row">
+    <div class="span12">
+      <h1>お探しのページは存在しません。</h1>
+      <p>恐れ入りますが、お探しのページは存在しません。<br/>
+      何かご不明点があれば、下記のフィードバックよりお問い合わせお願いします。<br/>
+      </p>
+      <p class="top_img_box">
+          <%= image_tag("icons/Compas@2x.png", :alt => "search",:title=> "検索機能",:class => "top_img search_demo") %>
+          <%= image_tag("icons/Mail@2x.png", :alt => "offer",:title=> "オファー機能",:class => "top_img offer_demo") %>
+          <%= image_tag("icons/Pensils@2x.png", :alt => "chat",:title=> "チャット機能",:class => "top_img chat_demo") %>
+      </p>
+    </div>
+  </div>
+</div>
+<div class="container">
+  <div class="row">
+    <div id="opinion-box"class="span12 tile" style="margin:15px 0px">
+    <%= hidden_field_tag :opinion_user_id, "#{@current_user.id if @current_user.present?}" %>
+    <%= text_area_tag :opinion,"ChoiStyleでは、あなたからのフィードバックをお待ちしています。みなさまから送信されたご意見は全て読んでいます。あなたの不便は、私達が解決し、サイトを利用するみなさまのためになります。ネガティブな意見でも遠慮なくお願いします。" %>
+    <%= submit_tag "フィードバック送信", :id => "fb-submit",:class => "btn btn-info btn-large btn-block login_top_btn" %>
+    </div>
+  </div>
+</div>

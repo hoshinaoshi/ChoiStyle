@@ -1,0 +1,24 @@
+<div class="container">
+  <div class="row">
+    <div class="span12">
+      <div class="login-screen offer-screen">
+        <%= form_for @offer, :url => {:action => 'create'},:method => "post" do |f| %>
+          <%= f.hidden_field(:salon_id) %>
+          <%= f.hidden_field(:stylist_id) %>
+          <%= f.hidden_field(:cut_model_id) %>
+          <%= f.hidden_field(:status) %>
+          <%= f.hidden_field(:offer_type) %>
+          <div class="control-group">
+            <%= f.text_field(:subject, :placeholder => "件名",:class => "offer_subject", :maxlength => 127) %>
+          </div>
+
+          <div class="control-group">
+            <%= f.text_area(:content, :placeholder => "内容",:class => "offer_content") %>
+          </div>
+          
+          <%= submit_tag "オファーを送信",:id => "offer-submit", :class => "btn btn-warning btn-large btn-block" %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

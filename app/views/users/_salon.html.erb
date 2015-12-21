@@ -1,0 +1,71 @@
+<%= f.fields_for :salon, @current_user.salon do |f2| %>
+  <div class="row">
+    <div class="span12">
+      <table>
+        <tr>
+          <th>店舗名</th>
+          <td><div class="fui-eye"></div></td>
+          <td><%= f2.text_field( :salon_name, :maxlength => 250 ) %></td>
+        </tr>
+        <tr>
+          <th>Webサイト</th>
+          <td><div class="fui-eye"></div></td>
+          <% @current_user.salon.salon_url = "http://" if @current_user.salon.salon_url.blank? %>
+          <td><div class="control-group"><%= f2.text_field( :salon_url, :maxlength => 250 ) %></div></td>
+        </tr>
+        <tr>
+          <th>電話番号</th>
+          <td><div class="fui-eye"></div></td>
+          <td><div class="control-group"><%= f2.text_field( :salon_tel, :maxlength => 13 ) %></div></td>
+        </tr>
+        <tr>
+          <th>郵便番号</th>
+          <td><div class="fui-eye"></div></td>
+          <td><div class="control-group"><%= f2.text_field( :salon_zip, :maxlength => 8 ) %></div></td>
+        </tr>
+        <tr>
+          <th>住所</th>
+          <td><div class="fui-eye"></div></td>
+          <td><%= f2.text_field( :salon_location, :class => "salon_location", :maxlength => 250 ) %></td>
+        </tr>
+        <tr>
+          <th>地域</th>
+          <td><div class="fui-eye"></div><div class="fui-radio-unchecked"></div><div class="fui-search"></div></td>
+          <td><%= f2.select :salon_prefecture, PREFECTURE_HASH.invert, :class => "select-block" %></td>
+        </tr>
+        <tr>
+          <th>エリア</th>
+          <td><div class="fui-eye"></div><div class="fui-radio-unchecked"></div><div class="fui-search"></div></td>
+          <td><%= f2.select :salon_area, options_for_select(SALON_AREA_HASH[@current_user.salon.salon_prefecture].invert ), :class => "select-block" %></td>
+        </tr>
+        <tr>
+          <th>最寄り駅</th>
+          <td><div class="fui-eye"></div></td>
+          <td><%= f2.text_field( :salon_station, :maxlength => 250 ) %></td>
+        </tr>
+        <tr>
+          <th>美容室の画像</th>
+          <td></td>
+          <td></td>
+        </tr>
+      </table>
+    </div>
+  </div>
+  <div class="row">
+    <% @current_user.salon.new_empty_images(3) %>
+    <% @current_user.salon.salon_images.each_with_index do |image, n|%>
+      <%=f2.fields_for :salon_images, image do |f3|%>
+        <div class="span12 image_upload_of_salon" style="margin:15px 0px 15px 15px">
+          <% if image.id %>
+            <%= image_tag image.image_url(:thumb), :size => "280x250" %>
+          <% end %>
+          <%=f3.file_field :image %>
+          <% if image.id %>
+            現在の画像を削除: <%= f3.check_box :_destroy %>
+          <% end %>
+        </div>
+      <% end %>
+    <% end %>
+    </div>
+  </div>
+<% end %>

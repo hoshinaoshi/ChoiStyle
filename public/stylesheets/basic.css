@@ -1,0 +1,342 @@
+.heder_and_footer_color{
+  background-color: #48c9b0 !important;
+}
+.footer_menu{
+  color: #d1f2eb !important;
+  font-size: 11px;
+  float:left;
+  padding:5px;
+}
+.footer_link{
+  color: #d1f2eb !important;
+}
+
+.header_menu{
+  float:right;
+  margin: 5px 0px !important;
+}
+
+.login_top{
+  padding: 0px !important;
+  margin: 0px !important;
+}
+
+.login_top_btn{
+  padding: 5px 5px !important;
+  font-size: 10px !important;
+  width: 100px !important;
+  display:inline !important;
+}
+
+.user_list{
+  font-size: 11px;
+  width: 320px;
+  margin-right: 20px;
+  margin-bottom: 20px;
+  float:left;
+  padding:0px !important;
+}
+.stylist_list{
+  font-size: 11px;
+  width: 320px;
+  width: 300px;
+  margin-right: 20px;
+  margin-bottom: 20px;
+  float:left;
+  padding:0px !important;
+}
+
+.user_detail{
+  width: 320px;
+  float:left;
+  padding:0px 0px 15px 15px !important;
+  clear:both; 
+}
+.user_detail_h3{
+  clear:both; 
+  padding-top: 10px !important;
+}
+
+.search_img{
+  width:120px;
+  height:175px;
+  float:left;
+}
+.search_box{
+  float:left;
+  margin: 15px 0px 0px 15px !important;
+  padding:0px !important;
+}
+.search_title{
+  float:left;
+  background-color: #1ABC9C !important;
+  color:#ffffff;
+  border-radius: 6px;
+  padding: 6px !important;
+  margin-right: 5px !important;
+  position: relative;
+  text-align: center;
+  text-align:justify;
+}
+.width_42{
+  width:42px;
+}
+.search_text{
+  float:left;
+  background-color: #eff0f2 !important;
+  color:#34495e;
+  border-radius: 6px;
+  padding: 6px !important;
+  margin-right: 15px !important;
+  position: relative;
+  text-align: center;
+}
+.want_style_text{
+  top:15px !important;
+  left:-11px !important;
+  background-color: #fff !important;
+  height: 100px !important;
+  position: relative !important;
+  width: 100px !important;
+  content: ' ' !important;
+  height: 0 !important;
+  position: absolute !important;
+  width: 0 !important;
+  border: 10px solid transparent !important;
+  border-right-color: #1ABC9C !important;
+}
+.illustrations img,.illustrations_img {
+  margin:15px 15px 0px 0px;
+  max-height: 75px !important;
+  max-width: 75px !important;
+}
+.menu_img {
+  margin:0px 10px 0px 0px;
+  padding-left:10px;
+  border-left: 1px solid #eee !important;
+  float:left;
+}
+.menu_text {
+  display:block;
+  font-size:5px;
+}
+.offer-screen{
+  background-color: #fff !important;
+  padding: 0px 0px 0px 100px !important;
+}
+.login-icon{
+  top: 120px !important;
+}
+.offer_subject{
+  width: 98% !important;
+}
+.offer_content{
+  width: 97% !important;
+  height: 100px !important;
+}
+.offer_img{
+  width:50px;
+  height:80px;
+  margin: 15px 0px 0px 15px !important;
+  padding:0px !important;
+}
+.offer_list{
+  font-size: 11px;
+  width: 40%;
+  margin-right: 20px;
+  margin-bottom: 20px;
+  float:left;
+  padding:0px !important;
+}
+.offer_box{
+  float:left;
+  margin: 15px 0px 0px 15px !important;
+  padding:0px !important;
+}
+.offer_title{
+  margin-top: 20px !important;
+}
+.offer_name{
+  font-size: 15px;
+  margin-bottom: 5px !important;
+}
+.aline-center{
+  text-align: left !important;
+}
+.chat_img{
+  width:100px;
+  height:160px;
+  margin: 15px 0px 0px 15px !important;
+  padding:0px !important;
+}
+.chat_img_s{
+  width:100px;
+  height:130px;
+}
+.chat-icon{
+  margin: 5px 5px 5px 5px !important;
+}
+.chat-msg{
+  width:300px !important;
+}
+.chat-submit{
+  height:100px !important;
+}
+.chat-my-self-inner{
+  background-color: #eff0f2 !important;
+  color: #34495e !important;
+}
+.chat-msg-stylist{
+  margin-top:6px !important;
+  margin-left:-20px !important;
+  background-color: #fff !important;
+  height: 100px !important;
+  width: 100px !important;
+  content: ' ' !important;
+  height: 0 !important;
+  width: 0 !important;
+  border: 10px solid transparent !important;
+  border-right-color: #1ABC9C !important;
+  position: static !important;
+  float:left;
+}
+.chat-msg-cut_model{
+  margin-top:6px !important;
+  left:100% !important;
+  margin-left:0px !important;
+  background-color: #fff !important;
+  height: 100px !important;
+  width: 100px !important;
+  content: ' ' !important;
+  height: 0 !important;
+  width: 0 !important;
+  border: 10px solid transparent !important;
+  border-left-color: #1ABC9C !important;
+  position: static !important;
+  float:right;
+}
+.chat-my-self-arrow-cut_model{
+  border-left-color: #eff0f2 !important;
+}
+.chat-my-self-arrow-stylist{
+  border-right-color: #eff0f2 !important;
+}
+
+.chat-image-float-stylist{
+  float:left;
+  clear:both;
+}
+.chat-image-float-cut_model{
+  float:right;
+  clear:both;
+}
+
+.tooltip-cut-model{
+  position: static !important;
+  min-height:40px !important;
+}
+.tooltip-stylist{
+  position: static !important;
+}
+.tooltip-inner-cut-model{
+  float:right !important;
+}
+.fui-radio-unchecked{
+  color:#E74C3C !important;
+}
+.pagination{
+  clear:both;
+}
+.first{
+  display:none;
+}
+.last{
+  display:none;
+}
+#send,#receives{
+  margin-top:15px;
+}
+#opinion{
+  width:95% !important;
+  color:#bdc3c7;
+}
+
+.order_img{
+  width:135px;
+  height:220px;
+  float:left;
+}
+.order_amount_input{
+  width:50px !important;
+  height:5px !important ;
+}
+.top_img {
+  margin:0px 50px 0px 0px;
+  max-height: 50px !important;
+  max-width: 50px !important;
+}
+.top_img_box {
+  margin-top: 75px !important;
+}
+.notice-msg{
+  background-color: #f0ffb9 !important;
+  margin-bottom:15px;
+}
+.order-img{
+  max-width:100%
+}
+.offer-img{
+  max-width:100%
+}
+.stylist-register-img{
+  max-width:100%
+}
+.chat-img{
+  max-width:100%
+}
+.offer-status0{
+  background-color: #F1C40F !important;
+  padding:5px !important;
+  color: #fff !important;
+}
+.offer-status1{
+  background-color: #2a73d6 !important;
+  padding:5px !important;
+  color: #fff !important;
+}
+.offer-status2{
+  background-color: #e81665 !important;
+  padding:5px !important;
+  color: #fff !important;
+}
+.top-tile{
+  background-color: #fff !important;
+}
+.h3-border-bottom{
+  padding-bottom: 4px !important;
+  margin-bottom: 15px !important;
+  border-bottom: 1px solid #eee !important;
+}
+.h3-border-top{
+  border-top: 1px solid #eee !important;
+}
+.salon_stylist_register_img {
+  margin:0px 10px 0px 10px;
+  max-height: 100px !important;
+  max-width: 100px !important;
+}
+.twitter-login{
+  background-color: #019ad2 !important;
+}
+.facebook-login{
+  background-color: #3b5998 !important;
+}
+body{
+  padding: 0px !important;
+}
+.container{
+  padding: 0px 10px !important;
+}
+h1{
+  font-size:24px !important;
+}

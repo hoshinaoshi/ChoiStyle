@@ -1,0 +1,28 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html lang="ja-JP">
+  <head>
+    <%= favicon_link_tag '/favicon.ico' %>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" >
+    <title><%= @page_title %></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="ChoiStyle - 東京を中心に首都圏のスタイリストとカットモデルのマッチングを行うためのサイトです。カットモデル募集をしたい美容室経営の方も登録いただけます。">
+    <meta name="Keywords" content="カットモデル,東京,美容室,スタイリスト,首都圏,ヘアメイク" lang="ja"> 
+    <%= stylesheet_link_tag "basic","bootstrap","flat-ui.css", "power_tip/jquery.powertip-green.min","bootstrap-responsive" %>
+  </head>
+  <body>
+    <%= render :partial => "/top/body_header" %>
+    <%= yield %>
+    <% if @current_user.present? %>
+      <div class="container">
+        <div class="row">
+          <div id="opinion-box"class="span12 tile" style="margin:15px 0px">
+          <%= hidden_field_tag :opinion_user_id, "#{@current_user.id if @current_user.present?}" %>
+          <%= text_area_tag :opinion,"ChoiStyleでは、あなたからのフィードバックをお待ちしています。みなさまから送信されたご意見は全て読んでいます。あなたの不便は、私達が解決し、サイトを利用するみなさまのためになります。ネガティブな意見でも遠慮なくお願いします。" %>
+          <%= submit_tag "フィードバック送信", :id => "fb-submit",:class => "btn btn-info btn-large btn-block login_top_btn" %>
+          </div>
+        </div>
+      </div>
+    <% end %>
+    <%= render :partial => "/top/body_footer" %>
+  </body>
+</html>

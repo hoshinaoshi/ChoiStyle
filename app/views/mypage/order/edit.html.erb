@@ -1,0 +1,30 @@
+<div class="container">
+  <div class="row">
+    <div class="span12"><h3>請求について</h3></div>
+    <div class="span12"><%= image_tag("/images/fllow.png") %></div>
+    <div class="span12">
+    <ul>
+      <li>月末締め、翌月3営業日内に請求書発行致します。</li>
+      <li>翌月までの支払いをお願いします。</li>
+      <li>お支払いは現金のみ</li>
+      <li>銀行振込手数料と請求書発行手数料210円は<strong>御社負担</strong></li>
+    </ul>
+    </div>
+  </div>
+  <div class="row">
+    <div class="span12"><h3>請求書情報変更</h3></div>
+    <div class="span12">
+      <div class="login-screen offer-screen">
+        <%= form_tag({:action => 'billing_update'},:method => "put") do %>
+          <h4>郵便番号</h4>
+          <div class="control-group">
+            <%= text_field_tag(:billing_zip, @zip, :placeholder => "郵便番号",:class => "offer_subject", :maxlength => 8) %>
+          </div>
+          <h4>請求先住所</h4>
+          <%= text_field_tag(:billing_location, @billing, :placeholder => "請求先住所",:class => "offer_content", :maxlength => 250) %>
+          <%= submit_tag "請求書情報変更",:id => "order-submit", :class => "btn btn-warning btn-large btn-block" %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

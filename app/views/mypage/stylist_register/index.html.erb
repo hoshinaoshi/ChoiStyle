@@ -1,0 +1,27 @@
+<div class="container">
+  <div class="row"><div class="span5"><h3>スタイリスト新規登録</h3></div></div>
+  <div class="row" style="margin-bottom:15px">
+    <div class="span2"><%= link_to "新規登録", new_mypage_stylist_register_path, :class => "btn btn-warning btn-large btn-block" %></div>
+  </div>
+  <div class="row"><div class="span12"><h3 class="h3-border-top">スタイリスト一覧</h3></div></div>
+  <div class="row">
+    <div class="span12">
+      <%= paginate(@stylists) %>
+    </div>
+  </div>
+  <div class="row">
+    <% @stylists.each do |stylist| %>
+      <div class="span3" style="margin-bottom:15px" >
+        <div class="tile search_img">
+          <%= link_to image_tag(user_image(stylist),:size => "160x120",:class => "stylist-register-img"), edit_mypage_stylist_register_path(stylist) %>
+          <p><%= stylist.name %></p>
+        </div>
+      </div>
+    <% end %>
+  </div>
+  <div class="row">
+    <div class="span12">
+      <%= paginate(@stylists) %>
+    </div>
+  </div>
+</div>

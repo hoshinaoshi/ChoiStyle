@@ -1,0 +1,75 @@
+<%= paginate(users) %>
+<% users.each do |user|%>
+  <% if user.user.present? && user.user.cut_model? %>
+    <div class="tile user_list">
+      <div class="tile search_img search_box">
+        <a href="/search/<%= user.id%>"><%= image_tag(user_image(user), :size => "120x160") %></a>
+      </div>
+      <div class="tile search_box">
+        <div class="tile search_title width_42">性別</div>
+        <div class="tile search_text"><%= GENDER_HASH[user.user.user_type] %></div>
+      </div>
+      <div class="tile search_box">
+        <div class="tile search_title width_42">地域</div>
+        <div class="tile search_text"><%= PREFECTURE_HASH[user.user.prefecture] %></div>
+      </div>
+      <div class="tile search_box">
+        <div class="tile search_title">希望施術</div>
+        <div class="tile search_text"><%= CAN_STYLE_HASH[user.can_style] %></div>
+      </div>
+      <div class="tile search_box">
+        <div class="tile search_title">切りたい長さ</div>
+        <div class="tile search_text"><%= WANT_LONG_HASH[user.want_long] %></div>
+      </div>
+      <div class="tile search_box">
+        <div class="tile search_title">希望スタイル</div>
+        <div class="tile search_text"><%= WANT_STYLE_HASH[user.want_style] %></div>
+      </div>
+      <div class="tile search_box" style="clear:both;margin-bottom:15px !important">
+        <div class="tile search_title">ログイン時間</div>
+        <div class="tile search_text"><%= get_last_sign_in_at user %></div>
+      </div>
+    </div>
+  <% else %>
+    <div class="tile stylist_list">
+      <div class="tile search_img search_box">
+        <a href="/search/<%= user.id%>"><%= image_tag(user_image(user), :size => "120x160") %></a>
+      </div>
+      <div class="tile search_box">
+        <div class="tile search_title width_42">対象</div>
+        <div class="tile search_text"><%= STYLIST_TARGET_HASH[user.target] %></div>
+      </div>
+      <div class="tile search_box">
+        <div class="tile search_title width_42">地域</div>
+        <div class="tile search_text"><%= PREFECTURE_HASH[salon_prefecture(user)] %></div>
+      </div>
+      <div class="tile search_box">
+        <div class="tile search_title width_42">エリア</div>
+        <div class="tile search_text"><%= SALON_AREA_HASH[salon_prefecture(user)][salon_area(user)] %></div>
+      </div>
+      <div class="tile search_box">
+        <div class="tile search_title">希望施術</div>
+        <div class="tile search_text"><%= CAN_STYLE_HASH[user.can_style] %></div>
+      </div>
+      <div class="tile search_box" style="clear:both">
+        <div class="tile search_title">切りたい長さ</div>
+        <div class="tile search_text"><%= WANT_LONG_HASH[user.want_long] %></div>
+      </div>
+      <div class="tile search_box" style="clear:both;">
+        <div class="tile search_title">希望スタイル</div>
+        <div class="tile search_text"><%= WANT_STYLE_HASH[user.want_style] %></div>
+      </div>
+      <% if salon_name(user).present? &&  salon_url(user).present?%>
+      <div class="tile search_box" style="clear:both;">
+        <div class="tile search_title">美容室名</div>
+        <div class="tile search_text"><%= link_to salon_name(user), salon_url(user),:rel => "nofollow" %></div>
+      </div>
+      <% end %>
+      <div class="tile search_box" style="clear:both;margin-bottom:15px !important">
+        <div class="tile search_title">ログイン時間</div>
+        <div class="tile search_text"><%= get_last_sign_in_at user %></div>
+      </div>
+    </div>
+  <% end %>
+<% end %>
+<%= paginate(users) %>

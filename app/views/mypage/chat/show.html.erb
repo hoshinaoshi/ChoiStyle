@@ -1,0 +1,54 @@
+<div class="container">
+  <div class="row">
+    <div class="span3 chat_span3">
+      <div class="chat_img offer_box">
+        <%= image_tag(user_image(@chat.salon_id.blank? ? @chat.stylist : @chat.salon),:class => "chat_img_s") %></br>
+        <%= @chat.stylist_id.blank? ? @chat.salon.user.nick_name : @chat.stylist.nick_name %>
+      </div>
+    </div>
+    <div class="span6 chat_span6" style="position: relative">
+      <% @chat.chat_messages.each do |message|%>
+        <% class_name = (message.cut_model? ? "chat-image-float-cut_model" : "chat-image-float-stylist") %>
+          <% if message.message.present? %>
+            <div style="clear:both" class="tooltip fade bottom in <%= (message.cut_model? ? "tooltip-cut-model" : "tooltip-stylist") %> <%= class_name %>">
+              <% if message.user_type == @current_user.user_type
+                   if message.cut_model?
+                     chat_my_self = "chat-my-self-arrow-cut_model"
+                   else 
+                     chat_my_self = "chat-my-self-arrow-stylist"
+                   end
+                 end %>
+              <div class="tooltip-arrow <%= (message.cut_model? ? "chat-msg-cut_model" : "chat-msg-stylist") %> <%= chat_my_self %>"></div>
+              <div class="tooltip-inner <%= "tooltip-inner-cut-model" if message.cut_model?%> <%= "chat-my-self-inner" if message.user_type == @current_user.user_type %>"><%= message.message.html_safe %></div>
+            </div>
+          <% end %>
+          <% if message.image? %>
+            <%= image_tag message.image_url(:thumb), :class => "#{class_name}" %>
+          <% end %>
+      <% end %>
+    </div>
+    <div class="span3 chat_span3">
+      <div class="chat_img offer_box">
+        <%= image_tag(user_image(@chat.cut_model),:class => "chat_img_s") %><br/>
+        <%= @chat.cut_model.user.nick_name %>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="span3">
+    </div>
+    <div class="span8" style="margin-top:15px">
+      <%= form_for @chat_message, :url => {:action => 'create',:id => @chat.id},:method => "post" do |f| %>
+      <table>
+        <tr>
+          <td><span class="fui-chat chat-icon"></span><%= f.text_area( :message, :class => "chat-msg" ) %><br/></td>
+          <td rowspan="2"><%= f.submit "送信", :class => "btn btn-info btn-large btn-block chat-submit" %></td>
+        </tr>
+        <tr>
+          <td><span class="fui-photo chat-icon"></span><%=f.file_field :image, :class => "com-mar-5r" %></td>
+        </tr>
+      </table>
+      <% end %>
+    </div>
+  </div>
+</div>

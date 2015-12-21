@@ -1,0 +1,98 @@
+<div class="row">
+  <div class="span12">
+    <% if @editable
+         action = "update"
+         method = "put"
+       else
+         action = "create"
+         method = "post"
+       end  %>
+    <%= form_for stylist, :url => {:action => action}, :method => method do |f| %>
+      <% unless @editable %>
+        <%= f.hidden_field :salon_prefecture, :value => stylist.salon_prefecture %>
+        <%= f.hidden_field :salon_area, :value => stylist.salon_area %>
+      <% end %>
+      <table>
+        <tr>
+          <th>名前</th>
+          <td><div class="fui-radio-unchecked"></div></td>
+          <td><div class="control-group"><%= f.text_field( :name ) %></div></td>
+        </tr>
+        <tr>
+          <th>ニックネーム</th>
+          <td><div class="fui-eye"></div><div class="fui-radio-unchecked"></div></td>
+          <td><div class="control-group"><%= f.text_field( :nick_name ) %></div></td>
+        </tr>
+        <tr>
+          <th>性別</th>
+          <td><div class="fui-eye"></div><div class="fui-radio-unchecked"></div></td>
+          <td><%= f.select :gender, GENDER_HASH.invert, :class => "select-block" %></td>
+        </tr>
+        <tr>
+          <th>対象</th>
+          <td><div class="fui-eye"></div><div class="fui-search"></div></td>
+          <td><%= f.select :target, STYLIST_TARGET_HASH.invert, :class => "select-block" %></td>
+        </tr>
+        <tr>
+          <th>切りたい長さ</th>
+          <td><div class="fui-eye"></div><div class="fui-search"></div></td>
+          <td><%= f.select :want_long, WANT_LONG_HASH.invert, :class => "select-block" %></td>
+        </tr>
+        <tr>
+          <th>仕上げたいスタイル</th>
+          <td><div class="fui-eye"></div><div class="fui-search"></div></td>
+          <td><%= f.select :want_style, WANT_STYLE_HASH.invert, :class => "select-block" %></td>
+        </tr>
+        <tr>
+          <th>仕上げたいスタイル詳細</th>
+          <td><div class="fui-eye"></div></td>
+          <td><%= f.text_area( :want_style_text ) %></td>
+        </tr>
+        <tr>
+          <th>行いたい施術</th>
+          <td><div class="fui-eye"></div><div class="fui-search"></div></td>
+          <td><%= f.select :can_style, CAN_STYLE_HASH.invert, :class => "select-block" %></td>
+        </tr>
+        <tr>
+          <th>行いたい施術詳細</th>
+          <td><div class="fui-eye"></div></td>
+          <td><%= f.text_area( :can_style_text ) %></td>
+        </tr>
+        <tr>
+          <th>自己紹介</th>
+          <td><div class="fui-eye"></div></td>
+          <td><%= f.text_area( :my_self ) %></td>
+        </tr>
+        <tr>
+          <th>スタイリストの写真</th>
+          <td><div class="fui-eye"></div></td>
+          <td class="image_upload_of_salon">
+            <% stylist.new_empty_image if stylist.stylist_image.blank? %>
+            <% image = stylist.stylist_image %>
+            <%= f.fields_for :stylist_image, image do |f2|%>
+              <% if image.id %>
+                <%=image_tag image.image_url(:thumb)%>
+              <% end %>
+              <%= f2.file_field :image, :class => "com-mar-5r" %>
+              <% if image.id %>
+                現在の画像を削除: <%= f2.check_box :_destroy %>
+              <% end %>
+            <% end %>
+          </td>
+        </tr>
+      </table>
+      <div class="row">
+        <div class="span2" style="margin-top:15px"><%= f.submit "登録",:id => "stylist-register-submit",:class => "btn btn-warning btn-large btn-block" %></div>
+      </div>
+    <% end %>
+  </div>
+</div>
+<% if @editable %>
+  <div class="row">
+    <div class="span2">
+      <%= form_for stylist, :url => {:action => "destroy"}, :method => "delete" do |f| %>
+        <%= f.submit "削除", :class => "btn btn-danger btn-block" %>
+      <% end %>
+    </div>
+  </div>
+<% end %>

@@ -1,0 +1,15 @@
+<div class="container">
+  <% if notice.present? %>
+    <div class="row">
+      <div class="notice-msg span12 tile"><%= notice %></div>
+    </div>
+  <% end %>
+  <div class="row">
+    <div class="span12">
+      <h3 class="h3-border-bottom">お気に入り一覧</h3>
+      <%= paginate(@favorites) %>
+      <%= render :partial => "favorite_list", :locals=>{:favorites=> @favorites} %>
+      <%= paginate(@favorites) %>
+    </div>
+  </div>
+</div>

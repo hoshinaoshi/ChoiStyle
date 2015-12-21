@@ -1,0 +1,21 @@
+<header style="margin-bottom:35px;">
+  <div class="container heder_and_footer_color">
+    <div class="row">
+      <div class="span3">
+        <h1 class="header-title">ChoiStyle</h1>
+      </div>
+      <div class="span9 header_menu">
+        <div style="float:right">
+          <%= form_tag(:controller => "devise/sessions",:action => "create",:method => "post") do %>
+              <label class="login-field-icon fui-user" for="login-name"></label>
+              <input name="user[email]" type="text" class="login-field login_top" value="" placeholder="メールアドレス" id="login-name" />
+              <label class="login-field-icon fui-lock" for="login-pass"></label>
+              <input name="user[password]" type="password" class="login-field login_top" value="" placeholder="パスワード" />
+              <input id="user_remember_me" name="user[remember_me]" type="checkbox" value="1" style="display:none">
+            <%= submit_tag "ログイン", :class => "btn btn-warning btn-large btn-block login_top_btn" %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>

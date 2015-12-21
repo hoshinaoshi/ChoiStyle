@@ -1,0 +1,27 @@
+<header style="margin-bottom:35px;">
+  <div class="container heder_and_footer_color">
+    <div class="row">
+      <div class="span5">
+        <%= link_to image_tag("top-img.png", :alt => "ChoiStyle",:title=> "ChoiStyle"), root_path %>
+      </div>
+      <% if @current_user.present? %>
+        <div class="span6 header_menu">
+          <div class="menu_img"><%= link_to image_tag("icons/Compas@2x.png", :alt => "search",:title=> "検索",size: "25x25"), search_index_path %><span class="menu_text">検索</span></div>
+          <div class="menu_img"><%= link_to image_tag("icons/Mail@2x.png", :alt => "offer",:title=> "オファー",size: "25x25"), mypage_offer_index_path %><span class="menu_text">オファー</span></div>
+          <div class="menu_img"><%= link_to image_tag("icons/Pensils@2x.png", :alt => "chat",:title=> "チャット",size: "25x25"), mypage_chat_index_path %><span class="menu_text">チャット</span></div>
+          <% if @current_user.salon?%>
+          <div class="menu_img"><%= link_to image_tag("icons/Clipboard@2x.png", :alt => "stylist_register",:title=> "スタイリスト登録",size: "25x25"), mypage_stylist_register_index_path %><span class="menu_text">登録</span></div>
+          <% end %>
+          <% unless @current_user.cut_model?%>
+          <%# link_to image_tag("icons/sum.png", :alt => "order",:title=> "表示順設定",:class => "menu_img",size: "25x25"), mypage_order_index_path %>
+          <% end %>
+          <div class="menu_img"><%= link_to image_tag("icons/Retina-Ready@2x.png", :alt => "favorite",:title=> "お気に入り",size: "28x28"), mypage_favorite_index_path %><span class="menu_text">お気に入り</span></div>
+          <div class="menu_img"><%= link_to image_tag("icons/setting.png", :alt => "setting",:title=> "登録情報設定",size: "25x25"), users_change_path %><span class="menu_text">設定</span></div>
+          <%= form_tag(user_path(@current_user.id), :method => :delete) do %>
+            <%= submit_tag "ログアウト", class: "btn btn-warning btn-large btn-block login_top_btn" %>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</header>

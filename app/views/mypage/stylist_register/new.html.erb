@@ -1,0 +1,11 @@
+<div class="container">
+  <div class="row">
+    <div class="span12"><h3>スタイリスト登録</h3></div>
+  </div>
+  <div class="row" style="margin-bottom:20px">
+    <div class="span2"><div class="fui-radio-unchecked"></div>必須項目</div>
+    <div class="span2"><div class="fui-eye">他ユーザ閲覧項目</div></div>
+    <div class="span2"><div class="fui-search">検索で利用する項目</div></div>
+  </div>
+  <%= render partial: "form", :locals => { :stylist => @stylist} %>
+</div>

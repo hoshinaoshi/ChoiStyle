@@ -1,0 +1,56 @@
+<div class="container">
+  <% if notice.present? %>
+    <div class="row">
+      <div class="notice-msg span12 tile"><%= notice %></div>
+    </div>
+  <% end %>
+  <div class="row">
+    <div class="span12">
+      <h3 class="h3-border-bottom">オファー一覧</h3>
+      <input type="checkbox" checked="" data-toggle="switch" />
+      ※クリックで切り替え可能
+      <div id="send" style="display:none">
+        <% @sends.each do |offer| %>
+            <div class="tile offer_list">
+              <% if @current_user.cut_model?
+                   title = "スタイリスト"
+                   image_url = user_image(offer.stylist)
+                 else 
+                   title = "カットモデル"
+                   image_url = user_image(offer.cut_model)
+                 end %>
+              <div class="tile offer_img offer_box">
+                <%= link_to image_tag(image_url,:class => "offer-img"), mypage_offer_path(offer),:class => "", :target => "_blank" %>
+              </div>
+              <div class="tile offer_title offer_box">
+                <div class="offer_name"><%= title  %>名:<%= offer.cut_model.user.nick_name %></div>
+                <%= link_to offer.subject, mypage_offer_path(offer),:target => "_blank" %>
+              </div>
+              <div class="tile offer_title offer_box offer-status<%= offer.status %>"><%= OFFER_STATUS_HASH[offer.status] %></div>
+            </div>
+        <% end %>
+      </div>
+      <div id="receives">
+        <% @receives.each do |offer| %>
+            <div class="tile offer_list">
+              <% if @current_user.cut_model?
+                   title = offer.stylist? ? "スタイリスト" : "美容室"
+                   image_url = user_image(offer.stylist? ? offer.stylist : offer.salon)
+                 else 
+                   title = "カットモデル"
+                   image_url = user_image(offer.cut_model)
+                 end %>
+              <div class="tile offer_img offer_box">
+                <%= link_to image_tag(image_url,:class => "offer-img"), mypage_offer_path(offer),:target => "_blank" %>
+              </div>
+              <div class="tile offer_title offer_box">
+                <div class="offer_name"><%= title  %>名:<%= offer.cut_model.user.nick_name %></div>
+                <%= link_to offer.subject, mypage_offer_path(offer),:target => "_blank" %>
+              </div>
+              <div class="tile offer_title offer_box offer-status<%= offer.status %>"><%= OFFER_STATUS_HASH[offer.status] %></div>
+            </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

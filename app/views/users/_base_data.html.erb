@@ -1,0 +1,24 @@
+<div class="span12">
+  <table>
+    <tr>
+      <th>氏名</th>
+      <td><div class="fui-radio-unchecked"></div></td>
+      <td><div class="control-group"><%= f.text_field( :name, :id => "name", :maxlength => 250 ) %></div></td>
+    </tr>
+    <tr>
+      <th>ニックネーム</th>
+      <td><div class="fui-radio-unchecked"></div><div class="fui-eye"></div></td>
+      <td><div class="control-group"><%= f.text_field( :nick_name, :id => "nick_name", :maxlength => 250 ) %></div></td>
+    </tr>
+    <tr>
+      <th>登録タイプ</th>
+      <td><div class="fui-radio-unchecked"></div></td>
+      <td><%= f.select :user_type, options_for_select(USER_TYPE_HASH.invert,USER_TYPE_MODEL), :class => "select-block" %></td>
+    </tr>
+    <tr>
+      <th>性別</th>
+      <td><div class="fui-radio-unchecked"></div><div class="fui-eye"></div><div class="fui-search"></div></td>
+      <td><%= f.select :gender, options_for_select(GENDER_HASH.invert), :class => "select-block" %></td>
+    </tr>
+  </table>
+</div>

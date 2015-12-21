@@ -1,0 +1,26 @@
+<% if @current_user.blank? || @params["search_cut_model"].present? || @params["search_stylist"].present? || @current_user.cut_model? %>
+  <h3 class="tile-title">絞り込み条件</h3>
+  <%= select_tag :target, options_for_select(GENDER_HASH.invert), :class => "select-block span3", :prompt => "対象" %>
+  <%= select_tag :want_long, options_for_select(WANT_LONG_HASH.invert,@params[:want_long]), :class => "select-block span3", :prompt => "切りたい長さ" %>
+  <%= select_tag :want_style, options_for_select(WANT_STYLE_HASH.invert,@params[:want_style]), :class => "select-block span3", :prompt => "希望のスタイル" %>
+  <%= select_tag :can_style, options_for_select(CAN_STYLE_HASH.invert,(@params[:can_style].blank? ? "" : @params[:can_style])), :class => "select-block span3", :prompt => "施術" %>
+  <%= select_tag :salon_prefecture, options_for_select(PREFECTURE_HASH.invert,(@params[:salon_prefecture].blank? ? "" : @params[:salon_prefecture])), :class => "select-block span3", :prompt => "地域" %>
+  <% if @params[:salon_prefecture].present? %>
+    <%= select_tag :salon_area, options_for_select(SALON_AREA_HASH[@params[:salon_prefecture].to_i].invert, (@params[:salon_area].blank? ? "" : @params[:salon_area])), :class => "select-block span3", :prompt => "エリア" %>
+  <% end %>
+<% else %>
+  <%# select_tag :hair_long, options_for_select(HOW_STYLE_HASH.invert), :class => "select-block span3", :prompt => "髪型" %>
+  <%# select_tag :hair_type, options_for_select(HAIR_TYPE_HASH.invert), :class => "select-block span3", :prompt => "髪質" %>
+  <%# select_tag :volume, options_for_select(HAIR_VOLUME_HASH.invert), :class => "select-block span3", :prompt => "ボリューム" %>
+  <%# select_tag :wavy, options_for_select(HAIR_WAVY_HASH.invert), :class => "select-block span3", :prompt => "クセ" %>
+  <%# select_tag :when_parm, options_for_select(WHEN_HASH.invert), :class => "select-block span3", :prompt => "パーマ" %>
+  <%# select_tag :when_color, options_for_select(WHEN_HASH.invert), :class => "select-block span3", :prompt => "カラー" %>
+  <h3 class="tile-title">絞り込み条件</h3>
+  <%= select_tag :want_long, options_for_select(WANT_LONG_HASH.invert,@params[:want_long]), :class => "select-block span3", :prompt => "切りたい長さ" %>
+  <%= select_tag :want_style, options_for_select(WANT_STYLE_HASH.invert,@params[:want_style]), :class => "select-block span3", :prompt => "仕上げたいスタイル" %>
+  <%= select_tag :can_style, options_for_select(CAN_STYLE_HASH.invert,(@params[:can_style].blank? ? "" : @params[:can_style])), :class => "select-block span3", :prompt => "行いたい施術" %>
+  <%= select_tag :salon_prefecture, options_for_select(PREFECTURE_HASH.invert,(@params[:salon_prefecture].blank? ? "" : @params[:salon_prefecture])), :class => "select-block span3", :prompt => "地域" %>
+  <% if @params[:salon_prefecture].present? %>
+    <%= select_tag :salon_area, options_for_select(SALON_AREA_HASH[@params[:salon_prefecture].to_i].invert, (@params[:salon_area].blank? ? "" : @params[:salon_area])), :class => "select-block span3", :prompt => "エリア" %>
+  <% end %>
+<% end %>

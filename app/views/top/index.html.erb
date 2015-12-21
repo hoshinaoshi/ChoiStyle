@@ -1,0 +1,59 @@
+<div class="container">
+  <div class="row">
+    <div class="span6">
+      <%= image_tag("smartphone.png", :alt => "example",:title=> "機能見本") %>
+    </div>
+    <div class="span1"></div>
+    <div class="span5">
+      <h1>カットモデルを募集するならChoiStyle</h1>
+      <p>ChoiStyleはカットモデル募集サイトです。<br/>
+      カットモデル志望の方や、スタイリストの方はChoiStyleを通じて、<br/>
+      ユーザを探すことができます。
+      </p>
+      <h4>現在<%= @user_count %>人が登録しています。</h4>
+      <div class="login-form">
+        <div class="control-group">
+          <%# link_to "Twitterでログイン","/auth/twitter", :class => "btn btn-large btn-block twitter-login" %>
+          <%= link_to "Facebookでログイン","/auth/facebook", :class => "btn btn-large btn-block facebook-login" %>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="span12" style="border-top:1px solid #eeeeee;margin:15px 0px 15px 20px"></div>
+    <div class="span3">
+      <div class="tile top-tile">
+        <%= image_tag("icons/Compas@2x.png", :alt => "search",:title=> "検索機能",:class => "tile-image big-illustration search_demo") %>
+        <h3 class="tile-title">検索機能</h3>
+        <p>登録しているエリアのカットモデルやスタイリストを検索する機能です。条件を指定することで、募集の内容を絞り込むことができます。</p>
+      </div>
+    </div>
+
+    <div class="span3">
+      <div class="tile top-tile">
+        <%= image_tag("icons/Mail@2x.png", :alt => "search",:title=> "オファー機能",:class => "tile-image big-illustration offer_demo") %>
+        <h3 class="tile-title">オファー機能</h3>
+        <p>気になるカットモデル募集ユーザーがいたら気軽にカットモデルのオファーを送信しましょう</p>
+      </div>
+    </div>
+
+    <div class="span3">
+      <div class="tile top-tile">
+        <%= image_tag("icons/Pensils@2x.png", :alt => "search",:title=> "チャット機能",:class => "tile-image big-illustration chat_demo") %>
+        <h3 class="tile-title">チャット機能</h3>
+        <p>カットモデルやスタイリストとのやりとりはチャット機能で行います。画像も送信できるので、ヘアカタログの写メや、現状の髪型を見せて自宅でカウンセリングを行うことも可能です。</p>
+      </div>
+    </div>
+    <div class="span3">
+      <div class="tile top-tile">
+        <%= image_tag("icons/Clipboard@2x.png", :alt => "search",:title=> "スタイリスト登録",:class => "tile-image big-illustration") %>
+        <h3 class="tile-title">スタイリスト登録</h3>
+        <p>美容室を経営している方は、スタイリストを何人でも登録可能です。また、美容室の画像の登録もできます。</p>
+      </div>
+    </div>
+    <div class="span12" style="border-top:1px solid #eeeeee;margin:15px 0px 15px 20px"></div>
+    <div class="span3">
+      <%= image_tag("example.png", :alt => "example",:title=> "機能見本") %>
+    </div>
+  </div>
+</div>

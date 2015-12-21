@@ -1,0 +1,27 @@
+<div class="container">
+  <div class="row">
+    <div class="span12">
+      <h3 class="h3-border-bottom">チャット一覧</h3>
+      <%= paginate(@chats) %>
+      <% @chats.each do |chat| %>
+          <div class="tile offer_list">
+            <% if @current_user.cut_model?
+                 title = chat.salon_id.blank? ? "スタイリスト名" : "美容室名"
+                 image_url = user_image(chat.salon_id.blank? ? chat.stylist : chat.salon)
+               else
+                 title = "カットモデル名"
+                 image_url = user_image(chat.cut_model)
+               end %>
+            <div class="tile offer_img offer_box">
+              <%= link_to image_tag(image_url, :class => "chat-img"), mypage_chat_path(chat) %>
+            </div>
+            <div class="tile offer_title offer_box">
+              <div class="offer_name"><%= title %>:<%= chat.cut_model.user.nick_name %></div>
+              <%= link_to chat.offer.subject, mypage_chat_path(chat) %>
+            </div>
+          </div>
+      <% end %>
+      <%= paginate(@chats) %>
+    </div>
+  </div>
+</div>

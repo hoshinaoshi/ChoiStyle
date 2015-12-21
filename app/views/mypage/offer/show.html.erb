@@ -1,0 +1,23 @@
+<div class="container">
+  <div class="row">
+    <div class="span12">
+      <div class="login-screen offer-screen">
+        <div class="control-group">
+          <div class="tile aline-center"><%= @offer.subject %></div>
+        </div>
+
+        <div class="control-group">
+         <div class="tile aline-center"><%= @offer.content %></div>
+        </div>
+        <% if @current_user.user_type != @offer.offer_type && @offer.in_progress? %>
+          <%= form_tag({controller: "offer", action: "fix", approve_flag: 1, offer_id: @offer.id}) do %>
+            <%= submit_tag "オファーを承認", :class => "btn btn-info btn-large btn-block" %>
+          <% end %>
+          <%= form_tag({controller: "offer", action: "fix", approve_flag: 2, offer_id: @offer.id}) do %>
+            <%= submit_tag "オファーを却下", :class => "btn btn-danger btn-block" %>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

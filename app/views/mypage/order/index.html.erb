@@ -1,0 +1,52 @@
+<div class="container">
+  <% if notice.present? %>
+    <div class="row">
+      <div class="notice-msg span12 tile"><%= notice %></div>
+    </div>
+  <% end %>
+  <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+  <div class="row"><div class="span12 tile">ChoiStyleではカットモデルに表示するスタイリストの検索順位を設定金額順に表示しています。<br/>検索順位が上位なほど、オファーを受ける可能性が高いと思われますので、是非ご利用ください。</br>また、更新は1日1回行えます。※設定金額は<strong>1日あたりの金額</strong>です。</div></div>
+  <div class="row">
+    <div class="span12"><%= image_tag("/images/billing_example.png") %></div>
+  </div>
+  <% if @billing_amount.present? && @billing_amount[1] >= 1 %>
+    <div class="row"><div class="span5"><h3>今月の請求合計</h3></div></div>
+    <div class="row"><div class="span5"><%= @billing_amount[1] %>円</div></div>
+  <% end %>
+  <div class="row"><div class="span12"><h3 class="h3-border-top">スタイリストの検索順位設定金額</h3>※設定金額は1日あたりの金額です。</div></div>
+  <div class="row">
+    <% @stylists.each do |stylist| %>
+      <div class="span3" style="margin-bottom:15px" >
+        <div class="tile order_img">
+          <div><%= stylist.name %></div>
+          <%= image_tag(user_image(stylist),:size => "160x120", :class => "order-img") %>
+          <div class="span1">設定金額</div><span id="current-order-omount<%=stylist.id%>"><%= stylist.order_amount %></span>円<br/>
+          <% if @current_user.billing_location_register? %>
+            <% if stylist.order_update_flag %>
+              <div class="btn disabled btn-large btn-block login_top_btn" >更新完了</div>
+            <% else %>
+              <%= text_field_tag "order_amount#{stylist.id}", stylist.order_amount,:class => "order_amount_input", :maxlength => 4 %><span id="format<%= stylist.id %>">円</span><div class="order-amout-submit btn btn-warning btn-large btn-block login_top_btn" value="<%= stylist.id %>">更新</div>
+            <% end %>
+          <% else %>
+            <%= text_field_tag "order_amount#{stylist.id}", stylist.order_amount,:class => "order_amount_input", :maxlength => 4 %><span id="format<%= stylist.id %>">円</span>
+            <%= link_to "更新", edit_mypage_order_path(@current_user), :class => "btn btn-warning btn-large btn-block login_top_btn" %>
+          <% end %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+  <div class="row">
+    <div class="span12">
+      <%= link_to ">>請求書情報更新", edit_mypage_order_path(@current_user) %>
+    </div>
+  </div>
+  <div class="row" style="margin-top:30px"><div class="span12"><h3 class="h3-border-top">現在の検索順位状況</h3></div></div>
+  <div class="row" style="margin-bottom:15px">
+    <div class="span1">検索順位</div><div class="span2">設定金額 / 1日</div>
+  </div>
+  <% @orders.each_with_index do |order,index| %>
+    <div class="row" style="margin-bottom:15px">
+      <div class="span1"><%= index + 1 %></div><div class="span2"><%= order.order_amount %>円</div>
+    </div>
+  <% end %>
+</div>

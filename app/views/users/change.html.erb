@@ -1,0 +1,36 @@
+<div class="container">
+  <% if notice.present? %>
+    <div class="row">
+      <div class="notice-msg span12 tile"><%= notice %></div>
+    </div>
+  <% end %>
+  <% if @current_user.salon? && @current_user.salon.stylists.length == 0 %>
+    <div class="row">
+      <div class="notice-msg span12 tile"><%= link_to image_tag("icons/Clipboard@2x.png", :alt => "stylist_register",:title=> "スタイリスト登録",:class => "salon_stylist_register_img"), mypage_stylist_register_index_path %>右上のメニューより←こちらのアイコンを選択し、スタイリスト登録を行ってください。<br/>※スタイリスト登録に料金はかかりません。</div>
+    </div>
+  <% end %>
+  <div class="row">
+    <div class="span12"><h3>ユーザー情報登録</h3></div>
+  </div>
+  <div class="row" style="margin-bottom:20px">
+    <div class="span2"><div class="fui-radio-unchecked"></div>必須項目</div>
+    <div class="span2"><div class="fui-eye">他ユーザ閲覧項目</div></div>
+    <div class="span2"><div class="fui-search">検索で利用する項目</div></div>
+  </div>
+  <div class="row">
+    <%= form_for @current_user, :url => {:action => 'update',:id => @current_user.id},:method => "put" do |f| %>
+      <% if @current_user.not_register?  %>
+        <%= render partial: "base_data", :locals => { :f => f} %>
+      <% elsif @current_user.cut_model? %>
+        <%= render partial: "cut_model", :locals => { :f => f} %>
+      <% elsif @current_user.stylist? %>
+        <%= render partial: "stylist", :locals => { :f => f} %>
+      <% elsif @current_user.salon? %>
+        <%= render partial: "salon", :locals => { :f => f} %>
+      <% end %>
+      <div class="row" style="margin-top:15px">
+        <div class="span2"><%= f.submit "登録",:id => "user-change-submit", :class => "btn btn-warning btn-large btn-block" %></div>
+      </div>
+    <% end %>
+  </div>
+</div>

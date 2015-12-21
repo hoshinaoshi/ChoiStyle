@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>カットモデルとスタイリストをつなぐ - ChoiStyle</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="ChoiStyle - 東京を中心に首都圏のスタイリストとカットモデルのマッチングを行うためのサイトです。">
+    <meta name="Keywords" content="カットモデル,東京,美容室,スタイリスト,首都圏,ヘアメイク" lang="ja"> 
+    <meta http-equiv="Content-Script-Type" content="text/javascript">
+    <meta http-equiv="Content-Style-Type" content="text/css">
+    <%= stylesheet_link_tag "basic","bootstrap","flat-ui.css", "power_tip/jquery.powertip-green.min" %>
+    <%= javascript_include_tag "jquery-1.8.3.min.js",
+      "jquery-ui-1.10.3.custom.min.js",
+      "jquery.ui.touch-punch.min.js",
+      "bootstrap.min.js",
+      "bootstrap-select.js",
+      "bootstrap-switch.js",
+      "flatui-checkbox.js",
+      "flatui-radio.js",
+      "jquery.tagsinput.js",
+      "jquery.placeholder.js",
+      "jquery.stacktable.js",
+      "application.js",
+      "jquery.powertip.min.js",
+      "basic.js",
+      "power_tip.js",
+      "validation.js",
+      "zip.js",
+      "http://maps.google.com/maps/api/js?v=3&sensor=false",
+      "map.js"
+    %>
+    <link rel="shortcut icon" href="images/favicon.ico">
+  </head>
+  <body>
+    <header style="margin-bottom:35px;">
+      <div class="container heder_and_footer_color">
+        <div class="row">
+          <div class="span3">
+            <h1 class="header-title">ChoiStyle</h1>
+          </div>
+        </div>
+      </div>
+    </header>
+    <div class="container">
+      <div class="row">
+        <div class="span5">
+          <div class="login-form" style="width:360px;">
+            <%= form_tag({:controller => "devise/passwords",:action => "update"}, {:method => "put"}) do %>
+              <input id="user_reset_password_token" name="user[reset_password_token]" type="hidden" value="<%= params["reset_password_token"] %>">
+              <div class="control-group">
+                <input name="user[password]" type="password" class="login-field login-pass" value="" placeholder="パスワード" id="login-pass" />
+                <label class="login-field-icon fui-lock" for="login-pass"></label>
+              </div>
+              
+              <div class="control-group">
+                <input name="user[password_confirmation]" type="password" class="login-field login-pass login-repass" value="" placeholder="パスワードを再入力" id="login-repass" />
+                <label class="login-field-icon fui-lock" for="login-pass"></label>
+              </div>
+
+              <%= submit_tag "パスワード変更",:id => "sing-up-button", :class => "btn btn-warning btn-large btn-block" %>
+            <% end %>
+          </div>
+        </div>
+        <div class="span1">
+        </div>
+        <div class="span6">
+          <h1>ChoiStyleへようこそ</h1>
+          <p>ChoiStyleはスタイリストと髪を切りたい人をつなぐサイトです。<br/>
+          全ての機能を無料でいくらでも利用可能。<br/>
+          素敵なスタイルを一緒に作りましょう。
+          </p>
+          <p>
+          ケータイメールで登録する場合は指定受信設定をお願いします。<br/>
+          <%= link_to "softbank","http://www.softbank.jp/mobile/support/antispam/settings/indivisual/whiteblack/", :rel => "nofollow" %><br/>
+          <%= link_to "au","http://www.au.kddi.com/support/mobile/trouble/forestalling/mail/anti-spam/fillter/function-11/", :rel => "nofollow" %><br/>
+          <%= link_to "docomo", "http://www.nttdocomo.co.jp/info/spam_mail/measure/domain/", :rel => "nofollow" %>
+          </p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="span12" style="border-top:1px solid #eeeeee;margin:15px 0px 15px 20px"></div>
+          <div class="span3">
+            <div class="tile top-tile">
+              <%= image_tag("icons/Compas@2x.png", :alt => "search",:title=> "検索機能",:class => "tile-image big-illustration search_demo") %>
+              <h3 class="tile-title">検索機能</h3>
+              <p>登録しているエリアのユーザを検索する機能です</p>
+            </div>
+          </div>
+
+          <div class="span3">
+            <div class="tile top-tile">
+              <%= image_tag("icons/Mail@2x.png", :alt => "search",:title=> "オファー機能",:class => "tile-image big-illustration offer_demo") %>
+              <h3 class="tile-title">オファー機能</h3>
+              <p>気になるユーザーがいたら気軽にオファーを送信しましょう</p>
+            </div>
+          </div>
+
+          <div class="span3">
+            <div class="tile top-tile">
+              <%= image_tag("icons/Pensils@2x.png", :alt => "search",:title=> "チャット機能",:class => "tile-image big-illustration chat_demo") %>
+              <h3 class="tile-title">チャット機能</h3>
+              <p>カットのやりとりはチャット機能で行います。画像も送信できるので、ヘアカタログの写メや、現状の髪型を見せてカウンセリングも可能です。</p>
+            </div>
+          </div>
+          <div class="span3">
+            <div class="tile top-tile">
+              <%= image_tag("icons/Clipboard@2x.png", :alt => "search",:title=> "スタイリスト登録",:class => "tile-image big-illustration") %>
+              <h3 class="tile-title">スタイリスト登録</h3>
+              <p>美容室を経営している方は、スタイリストを何人でも登録可能です。</p>
+            </div>
+          </div>
+      </div>
+    </div>
+    <div class="container">
+      <div class="row">
+        <div id="opinion-box"class="span12 tile" style="margin:15px 0px">
+        <%= hidden_field_tag :opinion_user_id, "#{@current_user.id if @current_user.present?}" %>
+        <%= text_area_tag :opinion,"ChoiStyleでは、あなたからのフィードバックをお待ちしています。みなさまから送信されたご意見は全て読んでいます。あなたの不便は、私達が解決し、サイトを利用するみなさまのためになります。ネガティブな意見でも遠慮なくお願いします。" %>
+        <%= submit_tag "フィードバック送信", :id => "fb-submit",:class => "btn btn-info btn-large btn-block login_top_btn" %>
+        </div>
+      </div>
+    </div>
+    <%= render :partial => "/top/body_footer" %>
+  </body>
+</html>

@@ -1,0 +1,18 @@
+<div class="container">
+  <div class="row">
+    <div class="span12"><h3>ユーザー情報登録</h3></div>
+  </div>
+  <div class="row" style="margin-bottom:20px">
+    <div class="span2"><div class="fui-radio-unchecked"></div>必須項目</div>
+    <div class="span2"><div class="fui-eye">他ユーザ閲覧項目</div></div>
+    <div class="span2"><div class="fui-search">検索で利用する項目</div></div>
+  </div>
+  <%= form_for @current_user, :url => {:action => 'update',:id => @current_user.id},:method => "put" do |f| %>
+    <div class="row">
+      <%= render partial: "base_data", :locals => { :f => f} %>
+    </div>
+    <div class="row" style="margin-top:15px">
+      <div class="span2"><%= f.submit "登録",:id => "select-type-submit", :class => "btn btn-warning btn-large btn-block" %></div>
+    </div>
+  <% end %>
+</div>

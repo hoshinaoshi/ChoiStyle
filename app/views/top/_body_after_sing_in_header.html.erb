@@ -1,0 +1,27 @@
+<header style="margin-bottom:35px;">
+  <div class="container heder_and_footer_color">
+    <div class="row">
+      <div class="span5">
+        <h1 class="header-title">ChoiStyle</h1>
+      </div>
+      <div class="span7 header_menu">
+        <div style="float:right">
+          <%= link_to image_tag("icons/Compas@2x.png", :alt => "search",:title=> "検索",:class => "menu_img"), search_index_path %>
+          <%= link_to image_tag("icons/Mail@2x.png", :alt => "offer",:title=> "オファー",:class => "menu_img"), mypage_offer_index_path %>
+          <%= link_to image_tag("icons/Pensils@2x.png", :alt => "chat",:title=> "チャット",:class => "menu_img"), mypage_chat_index_path %>
+          <% if @current_user.salon?%>
+          <%= link_to image_tag("icons/Clipboard@2x.png", :alt => "stylist_register",:title=> "スタイリスト登録",:class => "menu_img"), mypage_stylist_register_index_path %>
+          <% end %>
+          <% unless @current_user.cut_model?%>
+          <%= link_to image_tag("icons/sum.png", :alt => "order",:title=> "表示順設定",:class => "menu_img"), mypage_order_index_path %>
+          <% end %>
+          <%= link_to image_tag("icons/Retina-Ready@2x.png", :alt => "favorite",:title=> "お気に入り",:class => "menu_img"), mypage_favorite_index_path %>
+          <%= link_to image_tag("icons/setting.png", :alt => "setting",:title=> "登録情報設定",:class => "menu_img"), users_change_path %>
+          <%= form_tag({:controller => "devise/sessions",:action => "destroy"},:method => "DELETE",:style=>"display: inline") do %>
+            <%= submit_tag "ログアウト", :class => "btn btn-warning btn-large btn-block login_top_btn" %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>

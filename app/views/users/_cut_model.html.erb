@@ -1,0 +1,95 @@
+<div class="row">
+  <div class="span12">
+    <%= f.fields_for :cut_model, @current_user.cut_model do |f2| %>
+      <table>
+        <tr>
+          <th>地域</th>
+          <td><div class="fui-eye"></div><div class="fui-radio-unchecked"></div><div class="fui-search"></div></td>
+          <td><%= f2.select :prefecture, PREFECTURE_HASH.invert, :class => "select-block" %></td>
+        </tr>
+        <tr>
+          <th>エリア</th>
+          <td><div class="fui-eye"></div><div class="fui-radio-unchecked"></div><div class="fui-search"></div></td>
+          <td><%= f2.select :area, options_for_select(SALON_AREA_HASH[@current_user.cut_model.prefecture].invert ), :class => "select-block" %></td>
+        </tr>
+        <tr>
+          <th>現在の髪の長さ</th>
+          <td><div class="fui-eye"></div></td>
+          <td><%= f2.select :hair_long, HOW_STYLE_HASH.invert, :class => "select-block" %></td>
+        </tr>
+        <tr>
+          <th>髪の固さ</th>
+          <td><div class="fui-eye"></div></td>
+          <td><%= f2.select :hair_type, HAIR_TYPE_HASH.invert, :class => "select-block" %></td>
+        </tr>
+        <tr>
+          <th>髪の量</th>
+          <td><div class="fui-eye"></div></td>
+          <td><%= f2.select :volume, HAIR_VOLUME_HASH.invert, :class => "select-block" %></td>
+        </tr>
+        <tr>
+          <th>クセ</th>
+          <td><div class="fui-eye"></div></td>
+          <td><%= f2.select :wavy, HAIR_WAVY_HASH.invert, :class => "select-block" %></td>
+        </tr>
+        <tr>
+          <th>パーマ</th>
+          <td><div class="fui-eye"></div></td>
+          <td><%= f2.select :when_parm, WHEN_HASH.invert, :class => "select-block" %></td>
+        </tr>
+        <tr>
+          <th>カラー</th>
+          <td><div class="fui-eye"></div></td>
+          <td><%= f2.select :when_color, WHEN_HASH.invert, :class => "select-block" %></td>
+        </tr>
+        <tr>
+          <th>切りたい長さ</th>
+          <td><div class="fui-eye"></div><div class="fui-search"></div></td>
+          <td><%= f2.select :want_long, WANT_LONG_HASH.invert, :class => "select-block" %></td>
+        </tr>
+        <tr>
+          <th>仕上げたいスタイル</th>
+          <td><div class="fui-eye"></div><div class="fui-search"></div></td>
+          <td><%= f2.select :want_style, WANT_STYLE_HASH.invert, :class => "select-block" %></td>
+        </tr>
+        <tr>
+          <th>仕上げたいスタイル詳細</th>
+          <td><div class="fui-eye"></div></td>
+          <td><%= f2.text_area( :want_style_text, :class => "style_text" ) %></td>
+        </tr>
+        <tr>
+          <th>行いたい施術</th>
+          <td><div class="fui-eye"></div><div class="fui-search"></div></td>
+          <td><%= f2.select :can_style, CAN_STYLE_HASH.invert, :class => "select-block" %></td>
+        </tr>
+        <tr>
+          <th>行いたい施術詳細</th>
+          <td><div class="fui-eye"></div></td>
+          <td><%= f2.text_area( :can_style_text, :class =>"can_style_text" ) %></td>
+        </tr>
+        <tr>
+          <th>自己紹介</th>
+          <td><div class="fui-eye"></div></td>
+          <td><%= f2.text_area( :my_self ) %></td>
+        </tr>
+        <tr>
+          <th>あなたの写真</th>
+          <td><div class="fui-eye"></div></td>
+          <td class="image_upload_of_salon">
+            <% @current_user.cut_model.new_empty_image if @current_user.cut_model.cut_model_image.blank? %>
+            <% image = @current_user.cut_model.cut_model_image %>
+            <%= f2.fields_for :cut_model_image, image do |f3|%>
+              <% if image.id %>
+                <%=image_tag image.image_url(:thumb)%>
+              <% end %>
+              <%= f3.file_field :image, :class => "image_upload" %>
+              <% if image.id %>
+                現在の画像を削除: <%= f3.check_box :_destroy %>
+              <% end %>
+            <% end %>
+          </td>
+        </tr>
+      </table>
+    <% end %>
+  </div>
+</div>

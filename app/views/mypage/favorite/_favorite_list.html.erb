@@ -1,0 +1,65 @@
+<% favorites.each do |favorite|%>
+  <% if @current_user.cut_model? %>
+    <div class="tile user_list">
+      <div class="tile search_img search_box">
+        <a href="/search/<%= favorite.stylist.id%>"><%= image_tag(user_image(favorite.stylist), :size => "120x160") %></a>
+      </div>
+      <div class="tile search_box">
+        <div class="tile search_title width_42">対象</div>
+        <div class="tile search_text"><%= STYLIST_TARGET_HASH[favorite.stylist.target] %></div>
+      </div>
+      <div class="tile search_box">
+        <div class="tile search_title width_42">地域</div>
+        <div class="tile search_text"><%= PREFECTURE_HASH[salon_prefecture(favorite.stylist)] %></div>
+      </div>
+      <div class="tile search_box">
+        <div class="tile search_title width_42">エリア</div>
+        <div class="tile search_text"><%= SALON_AREA_HASH[salon_prefecture(favorite.stylist)][salon_area(favorite.stylist)] %></div>
+      </div>
+      <div class="tile search_box">
+        <div class="tile search_title">希望施術</div>
+        <div class="tile search_text"><%= CAN_STYLE_HASH[favorite.stylist.can_style] %></div>
+      </div>
+      <div class="tile search_box" style="clear:both">
+        <div class="tile search_title">切りたい長さ</div>
+        <div class="tile search_text"><%= WANT_LONG_HASH[favorite.stylist.want_long] %></div>
+      </div>
+      <div class="tile search_box">
+        <div class="tile search_title">希望スタイル</div>
+        <div class="tile search_text"><%= WANT_STYLE_HASH[favorite.stylist.want_style] %></div>
+      </div>
+      <% if salon_name(favorite.stylist).present? &&  salon_url(favorite.stylist).present?%>
+      <div class="tile search_box">
+        <div class="tile search_title">美容室名</div>
+        <div class="tile search_text"><%= link_to salon_name(favorite.stylist), salon_url(favorite.stylist) %></div>
+      </div>
+      <% end %>
+    </div>
+  <% else %>
+    <div class="tile user_list">
+      <div class="tile search_img search_box">
+        <a href="/search/<%= favorite.cut_model.id%>"><%= image_tag(user_image(favorite.cut_model), :size => "120x160") %></a>
+      </div>
+      <div class="tile search_box">
+        <div class="tile search_title width_42">性別</div>
+        <div class="tile search_text"><%= GENDER_HASH[favorite.cut_model.user.user_type] %></div>
+      </div>
+      <div class="tile search_box">
+        <div class="tile search_title width_42">地域</div>
+        <div class="tile search_text"><%= PREFECTURE_HASH[favorite.cut_model.user.prefecture] %></div>
+      </div>
+      <div class="tile search_box">
+        <div class="tile search_title">希望施術</div>
+        <div class="tile search_text"><%= CAN_STYLE_HASH[favorite.cut_model.can_style] %></div>
+      </div>
+      <div class="tile search_box">
+        <div class="tile search_title">切りたい長さ</div>
+        <div class="tile search_text"><%= WANT_LONG_HASH[favorite.cut_model.want_long] %></div>
+      </div>
+      <div class="tile search_box">
+        <div class="tile search_title">希望スタイル</div>
+        <div class="tile search_text"><%= WANT_STYLE_HASH[favorite.cut_model.want_style] %></div>
+      </div>
+    </div>
+  <% end %>
+<% end %>
